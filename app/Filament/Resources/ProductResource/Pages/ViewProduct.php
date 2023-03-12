@@ -11,13 +11,9 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Contracts\HasTable;
 
-class ViewProduct extends ViewRecord implements HasTable
+class ViewProduct extends ViewRecord
 {
-    use InteractsWithTable;
-
     protected static string $resource = ProductResource::class;
-
-    protected static string $view = 'filament-view-product';
 
     protected function getActions(): array
     {
@@ -26,16 +22,10 @@ class ViewProduct extends ViewRecord implements HasTable
         ];
     }
 
-    public function getTableQuery()
-    {
-        return Product::query();
-    }
-
-    public function getTableColumns()
+    protected function getFooterWidgets(): array
     {
         return [
-            TextColumn::make('title'),
-            TextColumn::make('sku'),
+            ProductResource\Widgets\ProductsTable::class,
         ];
     }
 }

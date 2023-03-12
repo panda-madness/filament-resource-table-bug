@@ -17,6 +17,8 @@ class ViewProduct extends ViewRecord implements HasTable
 
     protected static string $resource = ProductResource::class;
 
+    protected static string $view = 'filament-view-product';
+
     protected function getActions(): array
     {
         return [
